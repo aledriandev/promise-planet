@@ -6,9 +6,15 @@ import {getPlanets} from './actions.js'
 
 const App = ({planets}) => {
   // getPlanets();
-  console.log(planets[0])
-      const planets1= planets.map((planet,index)=>{
+  console.log('hola', planets)
+  console.log('hola sz', planets.length)
+  
+  for (let i of  planets)
+    console.log('hola', i)
+
+  const planets1= planets.map((planet,index)=>{
         return (
+          
           <li key={index}>{planet.pl_name}</li>
         );
       });
@@ -24,14 +30,10 @@ const App = ({planets}) => {
           </div>
           <div>
             PLANETS
-            <ul>{
-              planets.length != 0?
-              {planets1}:
-              <p>'No hay nada'</p>
-            }</ul>
-            <div>{
-              // planets[0].pl_name
-            }</div>
+            <ul> 
+               {planets1}
+            </ul>
+            
           </div>
         </div>
       </div>
