@@ -10,7 +10,7 @@ const App = ({planets}) => {
   const planetsInfo= planets.map((planet,index)=>{
         return (
           <div key={index}>
-            <img src={planet.img}/>
+            <img src={planet.img} width='100%'/>
             <h3>{planet.pl_name}</h3>
             <h4>Año de descubrimiento: </h4>{planet.pl_disc}
             <h4>Masa: </h4>{planet.pl_masse}
