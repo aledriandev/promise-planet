@@ -1,6 +1,7 @@
 import createStore from 'redux-zero';
 
 const initialState = {
+    result: {},
     planets: []
 }
 

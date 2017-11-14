@@ -12,26 +12,31 @@ function myJson (url) {
 }
 
 function infoPlanets (my_json) {
-    // console.log(myjson)
-    const arrPlanets=[];
+    
+    let oldPlanets = [...store.getState().planets];
     my_json.forEach(function(planet) {
         return myJson(planet).then(resp=>{
-                    arrPlanets.push(resp)
+            oldPlanets.push(resp)
+                    console.log(oldPlanets);
                 });
     });
-    return arrPlanets;
+    store.setState({
+        planets:oldPlanets,
+	})
+    console.log("out",store.getState().planets);
 }
 
 export async function getPlanets() {
     // const dataF = await dataFind();
     
-    let oldPlanets = store.getState().planets;
+    let oldPlanets = [...store.getState().planets];
     const myjson = await myJson('data/earth-like-results.json');
-    const info_planets =  infoPlanets(myjson.results);
-    store.setState({
-        planet: info_planets,
-	})
-    console.log(info_planets);
-    console.log(oldPlanets);
+    const info_planets = infoPlanets(myjson.results);
+    // store.setState({
+    //     result: myjson,
+    //     planets: info_planets,
+	// })
+    console.log(info_planets[0]);
+    // console.log(oldPlanets);
 }
 
