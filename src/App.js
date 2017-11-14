@@ -8,7 +8,7 @@ const App = ({planets}) => {
     return (
       <div className="App">
         <button onClick={getPlanets}>
-          get planets
+          Get Planets
         </button>
       </div>
     );
