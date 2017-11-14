@@ -5,24 +5,15 @@ import { connect } from 'redux-zero/react';
 import {getPlanets} from './actions.js'
 
 const App = ({planets}) => {
-  // getPlanets();
-  console.log('hola', planets)
-  console.log('hola sz', planets.length)
-  
-  for (let i of  planets)
-    console.log('hola', i)
+  getPlanets();
 
   const planets1= planets.map((planet,index)=>{
         return (
-          
-          <li key={index}>{planet.pl_name}</li>
+          <div key={index}>{planet.pl_name}</div>
         );
       });
     return (
       <div className="App">
-        <button onClick={getPlanets}>
-          Get Planets
-        </button>
         <div>
           <div className='header'>
             <h1>Exoplanet Explorer</h1>
@@ -30,9 +21,9 @@ const App = ({planets}) => {
           </div>
           <div>
             PLANETS
-            <ul> 
+            <div> 
                {planets1}
-            </ul>
+            </div>
             
           </div>
         </div>
