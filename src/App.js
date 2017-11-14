@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { connect } from 'redux-zero/react';
 
-class App extends Component {
-  render() {
+const App = ({}) => {
     return (
       <div className="App">
         <header className="App-header">
@@ -15,7 +15,8 @@ class App extends Component {
         </p>
       </div>
     );
-  }
 }
 
-export default App;
+
+const mapToProps = ({ planets }) => ({ planets });
+export default connect(mapToProps)(App);
