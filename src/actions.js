@@ -6,7 +6,7 @@ function myJson (url) {
 }
 
  function infoPlanets (my_json) {
-    return Promise.all( my_json.map( (planet) => myJson(planet)));
+    return Promise.all( my_json.map(planet => myJson(planet)));
  }
 
 export async function getPlanets() {

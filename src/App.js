@@ -7,9 +7,16 @@ import {getPlanets} from './actions.js'
 const App = ({planets}) => {
   getPlanets();
 
-  const planets1= planets.map((planet,index)=>{
+  const planetsInfo= planets.map((planet,index)=>{
         return (
-          <div key={index}>{planet.pl_name}</div>
+          <div key={index}>
+            <img src={planet.img}/>
+            <h3>{planet.pl_name}</h3>
+            <h4>Año de descubrimiento: </h4>{planet.pl_disc}
+            <h4>Masa: </h4>{planet.pl_masse}
+            <h4>Año de descubrimiento: </h4>{planet.pl_disc}
+            {<h4><a href={planet.pl_pelink}>MAS INFORMACION</a></h4>}
+          </div>
         );
       });
     return (
@@ -20,9 +27,9 @@ const App = ({planets}) => {
             <p>Learn more about planets around other stars</p>
           </div>
           <div>
-            PLANETS
+            <h3>PLANETS</h3>
             <div> 
-               {planets1}
+               {planetsInfo}
             </div>
             
           </div>
