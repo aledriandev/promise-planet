@@ -6,26 +6,32 @@ function dataFind () {
     });
 }
 
-function myJson () {
-    return fetch ('data/earth-like-results.json')
+function myJson (url) {
+    return fetch (url)
         .then(res=>res.json());
 }
 
 function infoPlanets (my_json) {
     // console.log(myjson)
+    const arrPlanets=[];
     my_json.forEach(function(planet) {
-        const ale= fetch (planet)
-                .then(resp=>resp.json());
-        console.log(ale)
-        // console.log(planet)
+        return myJson(planet).then(resp=>{
+                    arrPlanets.push(resp)
+                });
     });
+    return arrPlanets;
 }
 
 export async function getPlanets() {
     // const dataF = await dataFind();
-    const myjson = await myJson();
-    const info_planets = await infoPlanets(myjson.results);
-    console.log(myjson);
-    // console.log(info_planets);
+    
+    let oldPlanets = store.getState().planets;
+    const myjson = await myJson('data/earth-like-results.json');
+    const info_planets =  infoPlanets(myjson.results);
+    store.setState({
+        planet: info_planets,
+	})
+    console.log(info_planets);
+    console.log(oldPlanets);
 }
 
